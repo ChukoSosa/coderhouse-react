@@ -1,0 +1,8 @@
+.navbar_custom_class {
+    background-color: #e3f2fd;
+}
+
+.navbar_custom_class nav {
+    max-width: 1200px;
+    margin: auto;
+}
