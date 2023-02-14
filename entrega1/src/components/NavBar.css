@@ -1,8 +1,8 @@
-.navbar_custom_class {
+.navbar_wrapper {
     background-color: #e3f2fd;
 }
 
-.navbar_custom_class nav {
+.navbar_wrapper nav {
     max-width: 1200px;
     margin: auto;
 }

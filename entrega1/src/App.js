@@ -4,7 +4,7 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 // >> Components
 import ItemListContainer from "../src/components/ItemListContainer";
-import ContentPage from '../src/components/ContentPage';
+import ItemDetailContainer from './components/ItemDetailContainer';
 import NavBar from "../src/components/NavBar";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
@@ -15,9 +15,9 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path='/' element={ <ContentPage title="Bienvenido a nuestra tienda en línea" /> } />
-          <Route path='/productos' element={ <ItemListContainer greeting="Productos" /> } />
-          <Route path='/nosotros' element={ <ContentPage title="Nosotros" /> } />          
+          <Route path='/' element={ <ItemListContainer title="Listado de paquete de viajes" /> } />
+          <Route path='/categoria/:categoryId' element={ <ItemListContainer title="Categorias" /> } />
+          <Route path='/item/:id' element={ <ItemDetailContainer title="Producto" /> } />
 
           <Route path='/*' element={ <Navigate to='/' /> } />
         </Routes>

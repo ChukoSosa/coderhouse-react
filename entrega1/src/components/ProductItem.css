@@ -37,7 +37,15 @@
     overflow: hidden;
   }
   
-  .widget-body img {
+  .widget-body .image-wrapper {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin: auto;
+  }
+
+  .widget-body .image-wrapper img {
     width: 100%;
     display: block;
   }
@@ -46,6 +54,11 @@
     font-size: 18px;
     margin-top: 15px;
   }
+
+  .widget-footer .btn svg {
+      color: white
+  }
+  
   
   .widget-footer {
     padding: 20px;

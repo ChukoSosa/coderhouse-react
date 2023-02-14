@@ -1,5 +1,6 @@
-import './Widget.css';
+import './ProductItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from "react-router-dom"
 
 const Widget = (props) => {
   return (
@@ -11,7 +12,9 @@ const Widget = (props) => {
         </h3>
       </div>
       <div className="widget-body">
-        <img src={props.image} alt={props.title} />
+        <div className='image-wrapper'>
+          <img src={props.image} alt={props.title} / >
+        </div>
         <h5>{props.title}</h5>
         <p>
           {props.description}..
@@ -19,13 +22,11 @@ const Widget = (props) => {
         <h5><strong>Precio: </strong> $ {props.precio}</h5>
       </div>
       <div className="widget-footer">
-        <button 
-            type="button" 
-            className="btn btn-primary" 
-        >
-            <FontAwesomeIcon icon="shopping-cart" />
-            <span className="badge badge-light">COMPRAR</span>
-        </button> 
+        <Link className="btn btn-primary" to={ '/item/:id' }>
+          <FontAwesomeIcon icon="shopping-cart" />
+          <span className="badge badge-light">COMPRAR</span>
+        </Link>
+
       </div>
     </div>
   );

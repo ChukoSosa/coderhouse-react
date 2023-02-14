@@ -1,0 +1,10 @@
+.item_list_container {
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.item_list_container .title {
+    font-size: 28px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
