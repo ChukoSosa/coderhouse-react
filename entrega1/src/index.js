@@ -7,9 +7,18 @@ import reportWebVitals from './reportWebVitals';
 // >> font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChartPie } from '@fortawesome/free-solid-svg-icons'
+import { faTree } from '@fortawesome/free-solid-svg-icons'
+import { faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons'
+import { faMountain } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faShoppingCart);
+library.add(
+  faShoppingCart,
+  faChartPie,
+  faTree,
+  faUmbrellaBeach,
+  faMountain
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
