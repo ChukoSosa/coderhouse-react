@@ -1,6 +1,7 @@
 .item_list_container {
-    margin: 30px auto;
+    margin: 0px auto;
     max-width: 1200px;
+    text-align: left;
 }
 
 .item_list_container .title {

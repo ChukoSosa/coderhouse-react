@@ -1,13 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import './NavBar.css'
 import CartWidget from "./CartWidget"
-import { Link } from "react-router-dom"
 
 function NavBar() {
+    const icon_style = {
+        marginLeft: '10px'
+    }
     return (
         <div className="navbar_wrapper">
             <nav className="navbar navbar-expand-lg navbar-light">
-                <a className="navbar-brand" href={ '/' }>Oasis Viajes</a>
+                <a className="navbar-brand" href={ '/' }>
+                    <FontAwesomeIcon icon={'skull-crossbones'} />
+                    <span style={icon_style}>Oasis Viajes</span>
+                </a>
                 <button className="navbar-toggler" 
                     type="button" 
                     data-toggle="collapse" 
@@ -34,9 +42,10 @@ function NavBar() {
                                 Categorias
                             </a>
                             <div className="dropdown-menu">
-                                <Link className="nav-link" to={ '/categoria/:categoryId' }>Bosque</Link>
-                                <Link className="nav-link" to={ '/categoria/:categoryId' }>Playa</Link>
-                                <Link className="nav-link" to={ '/categoria/:categoryId' }>Valle</Link>
+                                <Link className="nav-link" to={ '/' }>Todas</Link>
+                                <Link className="nav-link" to={ '/categoria/bosque' }>Bosque</Link>
+                                <Link className="nav-link" to={ '/categoria/playa' }>Playa</Link>
+                                <Link className="nav-link" to={ '/categoria/valle' }>Valle</Link>
                             </div>
                         </li>
                     </ul>

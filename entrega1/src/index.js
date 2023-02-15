@@ -11,13 +11,15 @@ import { faChartPie } from '@fortawesome/free-solid-svg-icons'
 import { faTree } from '@fortawesome/free-solid-svg-icons'
 import { faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons'
 import { faMountain } from '@fortawesome/free-solid-svg-icons'
+import { faSkullCrossbones } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faShoppingCart,
   faChartPie,
   faTree,
   faUmbrellaBeach,
-  faMountain
+  faMountain,
+  faSkullCrossbones
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

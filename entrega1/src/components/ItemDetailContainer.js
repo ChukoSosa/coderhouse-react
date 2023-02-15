@@ -66,7 +66,7 @@ const ItemDetailContainer = () => {
                     "id": 4,
                     "icon": "mountain",
                     "categoria": "valle",
-                    "title": "Entra rios",
+                    "title": "Entre rios",
                     "image": "https://unsplash.it/200/300?'image'=14",
                     "description": "Granja orgánica en el valle, con huertas, animales de granja y senderos para caminatas por las colinas.",
                     "precio": 500,
