@@ -17,12 +17,10 @@ function App() {
         <Routes>
           <Route path='/' element={ <ItemListContainer title="Listado de paquete de viajes" /> } />
           <Route path='/categoria/:categoryId' element={ <ItemListContainer title="Categorias" /> } />
-          <Route path='/item/:id' element={ <ItemDetailContainer title="Producto" /> } />
+          <Route path='/item/:id' element={ <ItemDetailContainer /> } />
 
           <Route path='/*' element={ <Navigate to='/' /> } />
         </Routes>
-        
-        <footer>This is the footer</footer>
       </BrowserRouter>
     </div>
   );

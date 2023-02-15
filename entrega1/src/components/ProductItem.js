@@ -2,7 +2,7 @@ import './ProductItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
 
-const Widget = (props) => {
+const ProductItem = (props) => {
   return (
     <div className="widget">
       <div className="widget-header">
@@ -22,14 +22,13 @@ const Widget = (props) => {
         <h5><strong>Precio: </strong> $ {props.precio}</h5>
       </div>
       <div className="widget-footer">
-        <Link className="btn btn-primary" to={ '/item/:id' }>
+        <Link className="btn btn-primary" to={`/item/${props.id}`}>
           <FontAwesomeIcon icon="shopping-cart" />
           <span className="badge badge-light">COMPRAR</span>
         </Link>
-
       </div>
     </div>
   );
 };
 
-export default Widget;
+export default ProductItem;
