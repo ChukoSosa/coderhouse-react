@@ -1,5 +1,6 @@
 [
     {
+        "id": "0",
         "icon": "tree",
         "categoria": "bosque",
         "title": "Bariloche",
@@ -9,6 +10,7 @@
         "url": "https://ejemplo.com/leer-mas"
     },
     {
+        "id": "1",
         "icon": "tree",
         "categoria": "bosque",
         "title": "Villa La Angostura",
@@ -18,6 +20,7 @@
         "url": "https://ejemplo.com/leer-mas"
     },
     {
+        "id": "2",
         "icon": "umbrella-beach",
         "categoria": "playa",
         "title": "Carilo",
@@ -27,6 +30,7 @@
         "url": "https://ejemplo.com/leer-mas"
     },
     {
+        "id": "3",
         "icon": "umbrella-beach",
         "categoria": "playa",
         "title": "Punta Mogotes",
@@ -36,6 +40,7 @@
         "url": "https://ejemplo.com/leer-mas"
     },
     {
+        "id": "4",
         "icon": "mountain",
         "categoria": "valle",
         "title": "Entra rios",
@@ -45,6 +50,7 @@
         "url": "https://ejemplo.com/leer-mas"
     },
     {
+        "id": "5",
         "icon": "mountain",
         "categoria": "valle",
         "title": "Cordoba",
