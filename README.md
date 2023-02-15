@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# CoderHouse - Segunda pre-entrega del proyecto final
+
+Este es el trabajo practico para el curso de React js de CoderHouse
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
