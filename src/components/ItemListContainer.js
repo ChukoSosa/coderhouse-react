@@ -84,7 +84,7 @@ const ItemListContainer = ({ title }) => {
                         }
                     ]);
                     setLoading(false);
-                }, 1500);
+                }, 500);
             } else {
                 setLoading(false);
                 console.log("Error");
@@ -104,7 +104,7 @@ const ItemListContainer = ({ title }) => {
         <div className='item_list_container'>
             <div className='row'>
                 <div className='col-3'>
-                    <div className='bg-light p-4'>
+                    <div className='bg-light p-4 h-100'>
                         <h3 className='fw-bold mt-2 mb-3'>{titulo}</h3>
                         <h5 className='fw-normal mb-4'>{texto_bajada}</h5>
                         <p className='fs-6 mb-4'>{texto_parrafo_1}</p>

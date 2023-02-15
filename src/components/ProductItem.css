@@ -40,14 +40,13 @@
 
   .widget_body {
     padding: 20px;
+    padding-top: 0;
   }
 
   .widget_body p {
     font-size: 14px;
-    text-overflow: ellipsis;
     margin-bottom: 15px;
     height: 66px;
-    overflow: hidden;
   }
 
   .widget_body h5 {

@@ -107,30 +107,29 @@ const ItemDetailContainer = () => {
           <div className="item_detail_container">
             {producto ? (
                 <>
+                  <div className='product-details'>
                     <div className='row'>
-                        <div className='col'>
-                            <img src={producto.image} alt='Product details' />
+                      <div className='col text-center'>
+                        <img src={producto.image} alt='Product details' className='img-fluid' />
+                      </div>
+                      <div className='col'>
+                        <h2 className="title">{producto.title}</h2>
+                        <h5 className="category"><strong>Categoria: </strong>{producto.categoria}</h5>
+                        <p className="description">{producto.description}</p>
+                        <p className="price">Precio: $ {producto.precio}</p>
+                        <div className='text-center'>
+                          <button type="button" className="btn btn-primary btn-lg">
+                            COMPRAR
+                          </button>
                         </div>
-                        <div className='col'>
-                            <h5 className="title">Detalles del producto:</h5>
-                            <ul>
-                                <li><strong>Categoría: </strong> {producto.categoria}</li>
-                                <li><strong>Título: </strong> {producto.title}</li>
-                                <li><strong>Descripción: </strong><br/> {producto.description}</li>
-                                <li><strong>Precio: </strong> {producto.precio}</li>
-                            </ul>
-                            <div>
-                                <button type="button" className="btn btn-primary">
-                                    COMPRAR
-                                </button>
-                            </div>
-                        </div>
+                      </div>
                     </div>
-                    <div className='row'>
-                        <div className='col'>
-                            <button onClick={goBack}>Volver</button>
-                        </div>
+                    <div className='row text-center'>
+                      <div className='col'>
+                        <button onClick={goBack} className='btn btn-secondary'>Volver</button>
+                      </div>
                     </div>
+                  </div>
                 </>
             ) : (
               <p>Producto no encontrado</p>
