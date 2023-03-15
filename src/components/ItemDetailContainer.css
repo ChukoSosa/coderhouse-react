@@ -4,8 +4,6 @@
     margin-bottom: 15px;
 }
 .item_detail_container {
-    border: 1px solid black;
-    padding: 20px;
     margin: 30px auto;
     max-width: 1200px;
     width: 50%;
@@ -48,11 +46,10 @@
   margin-bottom: 20px;
 }
 
-.product_details .button_wrapper {
+.product_details .count_wrapper {
   text-align: left;
-  border-top: 1px solid #eee;
+  border: 1px solid #eee;
   padding: 15px;
-  display: flex;
 }
 
 .product_details .btn_volver {

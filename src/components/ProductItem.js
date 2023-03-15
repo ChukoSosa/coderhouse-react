@@ -19,13 +19,21 @@ const ProductItem = (props) => {
         <p>
           {props.description}..
         </p>
-        <h5><strong>Precio: </strong> $ {props.precio}</h5>
+        <h5><strong>Precio: </strong> $ {props.price}</h5>
+        <span><strong>Stock: </strong> {props.stock}</span>
       </div>
       <div className="widget_footer">
-        <Link className="btn btn-primary" to={`/item/${props.id}`}>
-          <FontAwesomeIcon icon="shopping-cart" />
-          <span className="badge badge-light">COMPRAR</span>
-        </Link>
+
+        {props.stock !== 0 ? (
+          <Link className="btn btn-primary" to={`/item/${props.id}`}>
+            <span className="badge badge-light">VER PRODUCTO</span>
+          </Link>
+        ) : (
+          <button className="btn btn-secondary" disabled={true}>
+            AGOTADO
+          </button>
+        )}
+
       </div>
     </div>
   );

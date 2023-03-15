@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
 
 function CartWidget() {
      // styles
@@ -14,7 +15,9 @@ function CartWidget() {
             style={button_badge}
         >
             <FontAwesomeIcon icon="shopping-cart" />
-            <span className="badge badge-light">4</span>
+            <span className="badge badge-light">
+                {shoppingCart.length}
+            </span>
         </button>    
     );
 }

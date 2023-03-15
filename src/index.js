@@ -12,6 +12,9 @@ import { faTree } from '@fortawesome/free-solid-svg-icons'
 import { faUmbrellaBeach } from '@fortawesome/free-solid-svg-icons'
 import { faMountain } from '@fortawesome/free-solid-svg-icons'
 import { faSkullCrossbones } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faShoppingCart,
@@ -19,7 +22,10 @@ library.add(
   faTree,
   faUmbrellaBeach,
   faMountain,
-  faSkullCrossbones
+  faSkullCrossbones,
+  faPlus,
+  faMinus,
+  faTrash
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
