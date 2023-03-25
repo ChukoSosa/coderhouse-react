@@ -1,6 +1,6 @@
 import './ItemListContainer.css'
 // API calls
-import { getFirestore, doc, getDoc, collection, getDocs } from 'firebase/firestore'
+import { getFirestore, collection, getDocs, where, query } from 'firebase/firestore'
 
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
@@ -13,24 +13,21 @@ const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const { categoria } = useParams();
-    const [itemsFiltrados, setFiltro] = useState([]);
 
      // >> Call to API         
     useEffect(() => {
-        const db = getFirestore()
-        const queryCollection = collection(db, 'Products')
+        const db = getFirestore() // firebase
+        const filterByCategory = categoria ? where('category', '==', categoria) : '' // filtro por categoria
+        
+        const queryCollection = query( collection(db, 'Products'), filterByCategory); // query
 
+        // GET products
         getDocs(queryCollection)
-        .then(res => setProducts( res.docs.map(prod => ({ id: prod.id, ...prod.data() }) )))
-            .catch(error => console.error(error))
-            .finally( () => setLoading(false))
-    }, [])
-
-    // >> Vista de producto por nombre categoria
-    useEffect(() => {
-        const itemsFiltrados = !categoria ? products : products.filter(product => product.category === categoria);
-        setFiltro(itemsFiltrados);
-    }, [categoria, products]);
+            .then(res => setProducts( res.docs.map(prod => ({ id: prod.id, ...prod.data() }) )))
+                .catch(error => console.error(error))
+                .finally( () => setLoading(false))
+        
+    }, [categoria]) // refresh si categoria cambia
 
     return (
         <div className='item_list_container'>
@@ -52,7 +49,7 @@ const ItemListContainer = () => {
                         </div>
                         ) : (
                         <div className='row'>
-                            {itemsFiltrados.map((product, index) => (
+                            {products.map((product, index) => (
                                 <div className='col-4' key={index}>
                                     <ProductItem {...product} />
                                 </div>

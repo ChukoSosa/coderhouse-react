@@ -1,7 +1,5 @@
 import './ItemDetailContainer.css'
-import { getFetch } from '../data/getFetch'
 import { getFirestore, doc, getDoc } from 'firebase/firestore'
-
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useParams } from "react-router-dom";
@@ -20,7 +18,6 @@ const ItemDetailContainer = () => {
     const isDisabled = count === 1;
 
     const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
-
 
     const navigate = useNavigate();
 
