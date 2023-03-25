@@ -2,82 +2,61 @@ import { createContext, useState } from "react";
 export const CartContext = createContext([]);
 
 const CartContextProvider = ({ children }) => {
-  const [cartList, setCartList] = useState([]);
+  const [productsList, setCartList] = useState([]);
   const [orderId, setorderId] = useState('');
 
-  /**
-   * AddToCart is a function that takes in an item and adds it to the cartList array
-   */
-  const addToCart = (item) => {
-    /* Resetting the orderId state to an empty string. */
-    setorderId('');
+  // >> SHOPING CART
+  // ADD product in shop cart
+  const addToCart = (product) => {
+    setorderId(''); // reset orederId
 
-    /* Using the spread operator to create a new array that is a copy of the cartList
-    array. */
     const cart = [
-      ...cartList,
-      item
+      ...productsList,
+      product
     ];
  
-    /* Merging the cart items. */
-    const mergedCart = cart.reduce((acc, item) => {
-      const existingItem = acc.find((i) => i.id === item.id);
+    const shopingCart = cart.reduce((acc, product) => {
+      const existingItem = acc.find((item) => item.id === product.id);
       if (existingItem) {
-        existingItem.quantity += item.quantity;
+        existingItem.count += product.count;
       } else {
-        acc.push(item);
+        acc.push(product);
       }
       return acc;
     }, []);
 
-    /* Setting the cartList state to the mergedCart array. */
-    setCartList(mergedCart);
+    setCartList(shopingCart);
   }
 
-  /**
-   * It clears the cartList array.
-   */
+  // REMOVE product in shop cart
+  const removeItem = (id) => {
+    const updatedShopingCart = productsList.filter(item => item.id !== id);
+    setCartList(updatedShopingCart);
+  };
+
+  // CLEAR product from shop cart
   const clearCart = () => {
     setCartList([]);
   }
 
-  /**
-   * Remove the item from the cart list that has the same id as the id passed in as
-   * an argument.
-   */
-  const removeItem = (idToRemove) => {
-    const updatedCartList = cartList.filter(item => item.id !== idToRemove);
-    setCartList(updatedCartList);
-  };
-
-  /**
-   * It takes an array of objects, and returns the sum of the quantity property of
-   * each object
-   * @returns The total number of items in the cart.
-   */
+  // GET total items from productsList
   const getTotalItems = () => {
-    return cartList.reduce((acc, item) => acc + item.quantity, 0);
+    return productsList.reduce((acc, item) => acc + item.count, 0);
   };
 
-  /**
-   * It takes an array of objects, and returns the sum of the price property of each
-   * object
-   * @returns The total price of all items in the cart.
-   */
+  // GET total price
   const getTotalPrice = () => {
-    return cartList.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    return productsList.reduce((acc, item) => acc + (item.price * item.count), 0);
   }
 
-  /**
-   * The function takes in an id and sets the orderId state to that id
-   */
+  // SET order ID
   const addOrder = (id) => {
     setorderId(id);
   }
 
   return(
     <CartContext.Provider value={{
-      cartList,
+      productsList,
       addToCart,
       clearCart,
       removeItem,

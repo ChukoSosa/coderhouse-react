@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+import { useContext } from 'react';
+import { CartContext } from './../context/context';
 
 function CartWidget() {
+    const { getTotalItems } = useContext(CartContext);
+    const shoppingCart = getTotalItems();
+
      // styles
      const button_badge = {
         marginLeft: 'auto'
@@ -16,7 +19,7 @@ function CartWidget() {
         >
             <FontAwesomeIcon icon="shopping-cart" />
             <span className="badge badge-light">
-                {shoppingCart.length}
+                { shoppingCart }
             </span>
         </button>    
     );

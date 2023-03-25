@@ -12,12 +12,12 @@ import HomeContent from './HomeContent';
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { categoria } = useParams();
+    const { categoryId } = useParams();
 
      // >> Call to API         
     useEffect(() => {
         const db = getFirestore() // firebase
-        const filterByCategory = categoria ? where('category', '==', categoria) : '' // filtro por categoria
+        const filterByCategory = categoryId ? where('category', '==', categoryId) : '' // filtro por categoria
         
         const queryCollection = query( collection(db, 'Products'), filterByCategory); // query
 
@@ -27,7 +27,7 @@ const ItemListContainer = () => {
                 .catch(error => console.error(error))
                 .finally( () => setLoading(false))
         
-    }, [categoria]) // refresh si categoria cambia
+    }, [categoryId]) // refresh si categoria cambia
 
     return (
         <div className='item_list_container'>
@@ -40,7 +40,7 @@ const ItemListContainer = () => {
                 <div className='col'>
                     <div className='mt-2 mb-2'>
                         <strong>categoria:</strong> 
-                        <span className='text-capitalize'>{!categoria ? ('todas') : (categoria)}</span>
+                        <span className='text-capitalize'>{!categoryId ? ('todas') : (categoryId)}</span>
                     </div>
                 
                     {loading ? (

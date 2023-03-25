@@ -1,40 +1,27 @@
 import './ShopCartList.css'
-import { getFetch } from '../data/getFetch'
+import { useContext } from 'react';
+import { CartContext } from './../context/context';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavigate } from 'react-router-dom';
 
 import React, { useState, useEffect } from 'react';
 import Spinner from './Spinner';
+import CheckoutForm from './CheckoutForm';
 
 const ShopCartList = () => {
-    const [products, setProducts] = useState([]);
+    const { removeItem, productsList, getTotalPrice, orderId } = useContext(CartContext);
+
     const [loading, setLoading] = useState(true);
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 500);
+
     const navigate = useNavigate();
 
-    const cartList = JSON.parse(localStorage.getItem("shoppingCart")) || [];
-
-    // >> Call to API
-    useEffect(() => {
-      getFetch()
-        .then(response => setProducts(response))
-        .catch(error => console.error(error))
-        .finally( () => setLoading(false))
-    }, [])
-
     // >> Volver a la pagina anterior
-    function goBackHome() { navigate('/') }
-
-    function buyProducts() { console.log("Compra realizada! ", products) }
-    function onRemove(id) {
-      setLoading(true);
-      const newCartList = cartList.filter((product) => product.id !== id);
-      localStorage.setItem("shoppingCart", JSON.stringify(newCartList));
-      setTimeout(() => {
-        setLoading(false)
-      }, 500);
-    }
-
+    function goBackHome() { navigate('/') }    
 
     return (
       <>
@@ -58,13 +45,19 @@ const ShopCartList = () => {
 
                       <div className='row'>
 
-                      {cartList.length === 0 ? (
-                        <div className="alert alert-warning mt-3" role="alert">
-                          Ningún producto fue agregado
-                        </div>
+                      {productsList.length === 0 ? (
+                          orderId === '' 
+                            ? <div className="alert alert-danger" role="alert">
+                                Ningún producto fue agregado
+                              </div>
+                            : <div className="alert alert-success" role="alert">
+                              <p>Su orden fue generada exitosamente.</p>
+                              <p>Nº de pedido: <b>{orderId}</b></p>
+                            </div>
+
                       ) : (
                         <div className="cart_list">
-                          {cartList.map((product) => (
+                          {productsList.map((product) => (
                             // Renderiza los productos del carrito de compras
                             <div className="row align-items-center text-center cart_item" key={product.id}>
                               <div className="col-auto">
@@ -99,39 +92,41 @@ const ShopCartList = () => {
                               </div>
 
                               <div className='col-auto'>
-                                <button className="btn btn-danger" onClick={() => onRemove(product.id)}>
+                                <button className="btn btn-danger" onClick={() => removeItem(product.id)}>
                                   <FontAwesomeIcon icon="trash" />
                                 </button>
                               </div>
                             </div>
                           ))}
+
+                          <div className='row mt-5 mb-5 align-items-center'>
+                            <div className='col'>
+                              <button onClick={goBackHome} className='btn btn-secondary'>Volver a la lista de productos</button>                            
+                            </div>
+                            <div className='col text-end'>
+                              <h2>
+                                <strong>Total Final:</strong> $ { getTotalPrice() }
+                              </h2>
+                            </div>
+                          </div>      
+
+                          <hr />
+
+                          <div className='row'>
+                            <div className='col mt-3'>
+                              <h3>Check-out</h3>
+                            </div>
+                          </div>
+
+                          <CheckoutForm />
                         </div>
                       )}
 
                       </div>
 
-                      <div className='foo_container mt-3'>
-                        <div className='row text-end'>
-                          <div className='col'>
-                            <h2>
-                              <strong>Total Final:</strong> $ -
-                            </h2>
-                          </div>
-                        </div>
-
-                        <hr />
-
-                        <div className='row'>
-                          <div className='col'>
-                            <button onClick={goBackHome} className='btn btn-secondary'>Volver a la lista de productos</button>
-                          </div>
-                          <div className='col-auto'>
-                            <button onClick={buyProducts} className='btn btn-primary'>Pagar</button>
-                          </div>
-                        </div>                        
-                      </div>
-
                     </div>
+
+                    
                   </div>
           </div>
         )}
