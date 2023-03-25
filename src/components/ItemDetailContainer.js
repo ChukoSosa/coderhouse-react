@@ -1,5 +1,7 @@
 import './ItemDetailContainer.css'
 import { getFetch } from '../data/getFetch'
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useParams } from "react-router-dom";
@@ -10,10 +12,10 @@ import Spinner from './Spinner';
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
-    const [productos, setProductos] = useState([]);
+    const [product, setProduct] = useState([]);
+
     const [loading, setLoading] = useState(true);
     const [addItemsloading, setItemsLoading] = useState(false);
-    const [product, setProductoSeleccionado] = useState(null);
     const [count, setCount] = useState(1);
     const isDisabled = count === 1;
 
@@ -23,18 +25,16 @@ const ItemDetailContainer = () => {
     const navigate = useNavigate();
 
     // >> Call to API
-    useEffect(() => {
-      getFetch()
-        .then(response => setProductos(response))
-        .catch(error => console.error(error))
-        .finally( () => setLoading(false))
-    }, [])
+     useEffect(() => {
+        const db = getFirestore()
+        const queryDoc = doc(db, 'Products', id)
 
-    // >> Vista de producto por ID
-    useEffect(() => {
-      const producto = productos.find((producto) => producto.id === Number(id));
-      setProductoSeleccionado(producto);
-    }, [id, productos]);
+        getDoc(queryDoc)
+            .then(res => setProduct( { id: res.id, ...res.data() } ))
+            .catch(error => console.error(error))
+            .finally( () => setLoading(false))
+
+    }, [])     
 
     // >> Redireccionamientos
     function goBack() { navigate('/') }

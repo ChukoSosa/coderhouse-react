@@ -114,7 +114,7 @@ const ShopCartList = () => {
                         <div className='row text-end'>
                           <div className='col'>
                             <h2>
-                              <strong>Total Final:</strong> $ 3.615
+                              <strong>Total Final:</strong> $ -
                             </h2>
                           </div>
                         </div>

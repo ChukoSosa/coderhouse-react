@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { initFirebase } from './firebase/config'
+
 // >> font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
@@ -27,6 +29,8 @@ library.add(
   faMinus,
   faTrash
 );
+
+initFirebase()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
